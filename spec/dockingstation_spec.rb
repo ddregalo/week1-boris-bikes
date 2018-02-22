@@ -15,7 +15,7 @@ describe 'dock' do
   it 'should return bike' do
     bike = Bike.new
     docking_station = DockingStation.new
-    expect(docking_station.dock(bike)).to eq(docking_station.bike)
+    expect(docking_station.dock(bike)).to eq(docking_station.current_bike)
   end
 end
 
@@ -24,7 +24,7 @@ describe 'attr_reader' do
     docking_station = DockingStation.new
     bike = Bike.new
     docking_station.dock(bike)
-    expect(docking_station.bike).to eq(bike)
+    expect(docking_station.current_bike).to eq(bike)
   end
 end
 
