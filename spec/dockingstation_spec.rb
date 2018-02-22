@@ -15,7 +15,7 @@ describe 'dock' do
   it 'should return bike' do
     bike = Bike.new
     docking_station = DockingStation.new
-    expect(docking_station.dock(bike)).to eq(bike)
+    expect(docking_station.dock(bike)).to eq(docking_station.bike)
   end
 end
 
@@ -29,9 +29,19 @@ describe 'attr_reader' do
 end
 
 describe 'release_bike' do
-  it "raises" do
+  it 'raises exception if no bikes' do
     station = DockingStation.new
     # bike = station.release_bike
-    expect { station.release_bike }.to raise_error("No bikes in docking station")
+    expect { station.release_bike }.to raise_error('No bikes in docking station')
+  end
+end
+
+describe DockingStation do
+  describe 'dock' do
+    it 'raises exception if dock is full' do
+      station = DockingStation.new
+      # bike = station.create_bike
+      expect  { 21.times { station.dock(Bike.new) } }.to raise_error('dock is full')
+    end
   end
 end
