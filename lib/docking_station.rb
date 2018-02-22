@@ -12,12 +12,15 @@ class DockingStation
   end
 
   def release_bike
-    raise 'No bikes in docking station' if @current_bike.nil?
-    @docked_bikes.pop
+    if empty?
+      raise 'No bikes in docking station'
+    else
+      @docked_bikes.pop
+    end
   end
 
   def dock(bike)
-    if @docked_bikes.count >= 20
+    if full?
       raise 'dock is full'
     else
       @current_bike = bike
@@ -25,4 +28,16 @@ class DockingStation
       @current_bike
     end
   end
+
+  private
+    def full?
+      @docked_bikes.count >= 20 ? true : false
+    end
+
+  private
+    def empty?
+      @current_bike == nil ? true : false
+    end
+
+
 end
