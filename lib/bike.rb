@@ -4,18 +4,11 @@ class Bike
     @working = true
   end
 
-  def is_broken
-    @broken = true
-  end
-
   def broken?
     @broken
-    end
+  end
 
-    def report_bike(bike)
-      if bike.broken?
-        is_broken
-      end
+    def report_bike
+      @broken = true
     end
-
 end

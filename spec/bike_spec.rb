@@ -9,10 +9,9 @@ describe Bike do
     # end
 
     describe '#report_bike' do
-      it 'bike broken' do
-        #station = DockingStation.new
-        # broken_bike = station.dock(bike)
+      it 'returns broken true' do
         bike = Bike.new
+        bike.report_bike
         expect(bike).to be_broken
       end
     end
