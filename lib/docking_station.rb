@@ -1,4 +1,4 @@
-require_relative 'bike'
+require_relative '../lib/bike'
 
 class DockingStation
   DEFAULT_CAPACITY = 20
@@ -25,10 +25,6 @@ class DockingStation
     # puts "Is the bike broken?"
     @docked_bikes << @currentbike
     @current_bike
-  end
-
-  def report_bike(bike)
-    raise 'Bike is broken' if bike.broken?
   end
 
   private

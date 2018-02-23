@@ -41,15 +41,7 @@ describe '#release_bike' do
   end
 end
 
-describe '#report_bike' do
-  it 'raise exception if bike broken' do
-    station = DockingStation.new
-    bike = Bike.new
-    expect(station.report_bike(bike)).to be true
-  end
-end
-
-it 'defalut capacity is 20' do
+it 'default capacity is 20' do
   station = DockingStation.new
   expect(station.capacity).to eq DEFAULT_CAPACITY
 end
