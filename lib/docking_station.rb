@@ -15,18 +15,20 @@ class DockingStation
   end
 
   def release_bike
-    if empty?
-      raise 'No bikes in docking station'
-    else
-      @docked_bikes.pop
-    end
+    raise 'No bikes in docking station' if empty?
+    @docked_bikes.pop
   end
 
   def dock(bike)
     raise 'dock is full' if full?
     @current_bike = bike
+    # puts "Is the bike broken?"
     @docked_bikes << @currentbike
     @current_bike
+  end
+
+  def report_bike(bike)
+    raise 'Bike is broken' if bike.broken?
   end
 
   private
@@ -34,8 +36,8 @@ class DockingStation
       @docked_bikes.count >= DEFAULT_CAPACITY
     end
 
-  private
     def empty?
       @current_bike == nil
     end
+
 end
