@@ -1,4 +1,5 @@
-require 'docking_station'
+require_relative '../lib/docking_station'
+DEFAULT_CAPACITY = 20
 
 describe DockingStation do
   it { should respond_to(:release_bike) }
@@ -38,11 +39,10 @@ end
 
 describe DockingStation do
   describe 'dock' do
-    it 'raises exception if dock is full' do
-      DEFAULT_CAPACITY = 20
+    it 'raises exception when dock is full' do
       station = DockingStation.new
       # bike = station.create_bike
-      expect  { (DEFAULT_CAPACITY + 1).times { station.dock(Bike.new) } }.to raise_error('dock is full')
+      expect  { (DEFAULT_CAPACITY + 1).times{ station.dock(Bike.new) } }.to raise_error('dock is full')
     end
   end
 end
