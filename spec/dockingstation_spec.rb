@@ -3,7 +3,7 @@ DEFAULT_CAPACITY = 20
 
 describe DockingStation do
   it { should respond_to(:release_bike) }
-end
+
 
 describe 'create_bike' do
   it 'should return an instance of the Bike class' do
@@ -37,12 +37,16 @@ describe 'release_bike' do
   end
 end
 
-describe DockingStation do
-  describe 'dock' do
-    it 'raises exception when dock is full' do
-      station = DockingStation.new
-      # bike = station.create_bike
-      expect  { (DEFAULT_CAPACITY + 1).times{ station.dock(Bike.new) } }.to raise_error('dock is full')
-    end
+describe 'dock' do
+  it 'raises exception when dock is full' do
+    station = DockingStation.new
+    # bike = station.create_bike
+    expect  { (DEFAULT_CAPACITY + 1).times{ station.dock(Bike.new) } }.to raise_error('dock is full')
   end
+end
+
+it 'defalut capacity is 20' do
+  station = DockingStation.new
+  expect(station.capacity).to eq DEFAULT_CAPACITY
+end
 end
