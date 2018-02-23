@@ -39,9 +39,10 @@ end
 describe DockingStation do
   describe 'dock' do
     it 'raises exception if dock is full' do
+      DEFAULT_CAPACITY = 20
       station = DockingStation.new
       # bike = station.create_bike
-      expect  { 21.times { station.dock(Bike.new) } }.to raise_error('dock is full')
+      expect  { (DEFAULT_CAPACITY + 1).times { station.dock(Bike.new) } }.to raise_error('dock is full')
     end
   end
 end
